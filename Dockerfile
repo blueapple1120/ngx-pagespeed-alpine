@@ -1,4 +1,4 @@
-ARG ALPINE_VERSION=3.7
+ARG ALPINE_VERSION=edge
 
 ########################
 # Build pagespeed psol #
@@ -160,10 +160,10 @@ RUN git clone -b ${NGX_PAGESPEED_TAG} \
 
 RUN wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz \
          https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz.asc && \
-    (gpg --keyserver ha.pool.sks-keyservers.net --keyserver-options timeout=10 --recv-keys ${NGINX_PGPKEY} || \
-     gpg --keyserver hkp://keyserver.ubuntu.com:80 --keyserver-options timeout=10 --recv-keys ${NGINX_PGPKEY} || \
-     gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --keyserver-options timeout=10 --recv-keys $NGINX_PGPKEY} ) && \
-    gpg --trusted-key ${NGINX_PGPKEY} --verify nginx-${NGINX_VERSION}.tar.gz.asc
+         (gpg --keyserver ha.pool.sks-keyservers.net --keyserver-options timeout=10 --recv-keys ${NGINX_PGPKEY} || \
+         gpg --keyserver hkp://keyserver.ubuntu.com:80 --keyserver-options timeout=10 --recv-keys ${NGINX_PGPKEY} || \
+         gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --keyserver-options timeout=10 --recv-keys $NGINX_PGPKEY} ) && \
+         gpg --trusted-key ${NGINX_PGPKEY} --verify nginx-${NGINX_VERSION}.tar.gz.asc
 
 COPY --from=pagespeed /usr/src/ngxpagespeed /usr/src/ngxpagespeed/
 
