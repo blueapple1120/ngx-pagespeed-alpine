@@ -59,14 +59,14 @@ RUN build/gyp_chromium --depth=. \
 
 RUN mkdir -p /usr/src/ngxpagespeed/psol/lib/Release/linux/x64 && \
     mkdir -p /usr/src/ngxpagespeed/psol/include/out/Release && \
-    mv out/Release/obj /usr/src/ngxpagespeed/psol/include/out/Release/ && \
-    mv pagespeed/automatic/pagespeed_automatic.a /usr/src/ngxpagespeed/psol/lib/Release/linux/x64/ && \
-    mv net \
-       pagespeed \
-       testing \
-       third_party \
-       url \
-       /usr/src/ngxpagespeed/psol/include/ \
+    cp -R out/Release/obj /usr/src/ngxpagespeed/psol/include/out/Release/ && \
+    cp -R pagespeed/automatic/pagespeed_automatic.a /usr/src/ngxpagespeed/psol/lib/Release/linux/x64/ && \
+    cp -R net \
+          pagespeed \
+          testing \
+          third_party \
+          url \
+          /usr/src/ngxpagespeed/psol/include/ \
     ;
 
 
